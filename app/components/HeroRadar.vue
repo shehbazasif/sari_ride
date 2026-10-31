@@ -6,9 +6,10 @@ const riders = [
 const hubs = [
   { x: 70, y: 90, label: 'eFOOD' }, { x: 450, y: 170, label: 'BOX' }, { x: 410, y: 430, label: 'Wolt' }
 ]
-const links = [
+const links: [number, number][] = [
   [0, 0], [2, 0], [1, 1], [3, 1], [4, 1], [5, 2], [6, 2]
 ]
+const linkLines = links.map(([ri, hi]) => ({ x1: riders[ri]!.x, y1: riders[ri]!.y, x2: hubs[hi]!.x, y2: hubs[hi]!.y }))
 </script>
 
 <template>
@@ -30,8 +31,8 @@ const links = [
     </g>
 
     <line
-      v-for="(l, i) in links" :key="'l' + i"
-      :x1="riders[l[0]].x" :y1="riders[l[0]].y" :x2="hubs[l[1]].x" :y2="hubs[l[1]].y"
+      v-for="(l, i) in linkLines" :key="'l' + i"
+      :x1="l.x1" :y1="l.y1" :x2="l.x2" :y2="l.y2"
       stroke="#8b5cf6" stroke-width="1.2" opacity=".7" class="flow"
     />
 

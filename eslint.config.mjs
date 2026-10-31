@@ -15,5 +15,13 @@ export default withNuxt(
         ]
       }
     }
+  },
+  {
+    // Custom animation/panel classes defined in app/assets/css/main.css
+    rules: {
+      'better-tailwindcss/no-unknown-classes': ['error', {
+        ignore: ['^(panel|grid-bg|glow-text|rise|sweep|flow|ping|float|draw|grow)( |$|\\b)']
+      }]
+    }
   }
 )

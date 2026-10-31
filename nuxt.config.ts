@@ -5,11 +5,11 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
-  colorMode: { preference: 'dark', fallback: 'dark' },
-
   devtools: {
     enabled: true
   },
+
+  colorMode: { preference: 'dark', fallback: 'dark' },
 
   css: ['~/assets/css/main.css'],
 

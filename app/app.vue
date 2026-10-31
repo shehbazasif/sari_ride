@@ -5,8 +5,8 @@ useHead({
   htmlAttrs: { lang: 'en' }
 })
 
-const title = 'Fero Ferto | AI-powered delivery riders'
-const description = 'Fero Ferto connects restaurants and shops with trained delivery riders and uses AI to dispatch every order fast.'
+const title = 'Fero Ferto | Delivery workforce, managed'
+const description = 'Fero Ferto is the manpower company that connects trained delivery riders with delivery companies — riders find new opportunities, companies hire and track workforce performance in one dashboard.'
 
 useSeoMeta({
   title,
@@ -23,6 +23,7 @@ const items = computed(() => [
   { label: 'How it works', to: '/how-it-works', active: route.path.startsWith('/how-it-works') },
   { label: 'For businesses', to: '/businesses', active: route.path.startsWith('/businesses') },
   { label: 'For riders', to: '/riders', active: route.path.startsWith('/riders') },
+  { label: 'Live demo', to: '/demo', active: route.path.startsWith('/demo') },
   { label: 'Contact', to: '/contact', active: route.path.startsWith('/contact') }
 ])
 </script>
@@ -40,7 +41,7 @@ const items = computed(() => [
 
       <template #right>
         <UColorModeButton />
-        <UButton to="/contact" label="Request a demo" class="hidden sm:inline-flex" />
+        <UButton to="/demo" label="Request a demo" class="hidden sm:inline-flex" trailing-icon="i-lucide-arrow-right" />
       </template>
 
       <template #body>

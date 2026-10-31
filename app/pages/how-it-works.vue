@@ -2,15 +2,15 @@
 useSeoMeta({ title: 'How it works | Fero Ferto' })
 
 const business = [
-  { icon: 'i-lucide-user-plus', title: 'Sign up', description: 'Tell us about your business and how many deliveries you expect.' },
-  { icon: 'i-lucide-plug', title: 'Send orders', description: 'Add orders in our dashboard. Connecting your own system comes later.' },
-  { icon: 'i-lucide-eye', title: 'Track everything', description: 'Watch each delivery live and see simple reports at the end of the day.' }
+  { icon: 'i-lucide-user-plus', title: 'Sign up', description: 'Tell us about your delivery operation and how many riders you need.' },
+  { icon: 'i-lucide-users', title: 'Hire from the network', description: 'Choose matched, vetted riders from our workforce — no recruiting effort on your side.' },
+  { icon: 'i-lucide-gauge', title: 'Track performance', description: 'See who is on shift, hours worked and workforce performance in one dashboard.' }
 ]
 
 const rider = [
-  { icon: 'i-lucide-file-check', title: 'Apply', description: 'Share your details and the vehicle you use.' },
-  { icon: 'i-lucide-graduation-cap', title: 'Get trained', description: 'Short training on safe, polite and fast delivery.' },
-  { icon: 'i-lucide-wallet', title: 'Start earning', description: 'Accept orders in the app and deliver.' }
+  { icon: 'i-lucide-file-check', title: 'Apply', description: 'Share your details, vehicle and the areas you can work.' },
+  { icon: 'i-lucide-graduation-cap', title: 'Get ready', description: 'A short onboarding on safe, polite and fast delivery.' },
+  { icon: 'i-lucide-briefcase', title: 'Choose your company', description: 'See open opportunities and pick the company and schedule that fit you.' }
 ]
 </script>
 
@@ -26,9 +26,9 @@ const rider = [
 
     <UPageSection title="What the AI does" description="The AI works in the background so nobody has to do it by hand.">
       <UPageGrid class="lg:grid-cols-3">
-        <UPageCard icon="i-lucide-crosshair" title="Picks the best rider" description="Looks at who is closest, who is free and who is best suited for the order." />
-        <UPageCard icon="i-lucide-route" title="Finds a good route" description="Suggests a faster path so the food arrives hot and the parcel arrives on time." />
-        <UPageCard icon="i-lucide-calendar-clock" title="Plans for busy times" description="Learns when orders go up, so enough riders are ready." />
+        <UPageCard icon="i-lucide-git-merge" title="Matches riders to companies" description="Looks at skills, availability and track record to suggest each rider the delivery company where they fit best." />
+        <UPageCard icon="i-lucide-handshake" title="Opens new opportunities" description="Riders see which companies need people like them and apply directly — no calls, no waiting." />
+        <UPageCard icon="i-lucide-calendar-clock" title="Plans staffing for busy times" description="Learns when each company gets busy, so the right number of riders is lined up in advance." />
       </UPageGrid>
     </UPageSection>
 

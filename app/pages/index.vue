@@ -37,7 +37,7 @@ const steps = [
           Fero Ferto is building an AI platform that shows delivery and logistics companies who is available, how riders work and how much demand is coming, so riders are matched and planned smarter.
         </p>
         <div class="rise mt-8 flex flex-wrap gap-3" style="--d:.6s">
-          <UButton to="/contact" size="xl" label="Request a demo" trailing-icon="i-lucide-arrow-right" />
+          <UButton to="/demo" size="xl" label="Open the live demo" trailing-icon="i-lucide-arrow-right" />
           <UButton to="/how-it-works" size="xl" label="See how it works" color="neutral" variant="outline" />
         </div>
       </div>
@@ -103,8 +103,8 @@ const steps = [
         description="Tell us about your delivery operation and we will show you how Fero Ferto can help."
         variant="subtle"
         :links="[
-          { label: 'Request a demo', to: '/contact', trailingIcon: 'i-lucide-arrow-right', color: 'neutral' },
-          { label: 'Join as a rider', to: '/riders', color: 'neutral', variant: 'outline' }
+          { label: 'Try the interactive demo', to: '/demo', trailingIcon: 'i-lucide-arrow-right' },
+          { label: 'Request a business demo', to: '/contact', color: 'neutral', variant: 'outline' }
         ]"
       />
     </UPageSection>

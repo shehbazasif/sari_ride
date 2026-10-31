@@ -40,6 +40,15 @@ function onSubmit() {
 
     <UPageSection>
       <div class="max-w-xl mx-auto">
+        <UAlert
+          class="mb-5"
+          color="primary"
+          variant="subtle"
+          icon="i-lucide-monitor-play"
+          title="Want to see the product before you write?"
+          description="No booking needed — the interactive demo dashboard runs right in your browser with fictional data."
+          :actions="[{ label: 'Open the live demo', to: '/demo', trailingIcon: 'i-lucide-arrow-right' }]"
+        />
         <UForm :state="state" :validate="validate" class="space-y-5" @submit="onSubmit">
           <UFormField label="Your name" name="name" required>
             <UInput v-model="state.name" class="w-full" placeholder="Full name" />

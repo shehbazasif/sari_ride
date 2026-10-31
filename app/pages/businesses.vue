@@ -16,7 +16,10 @@ const benefits = [
     <UPageHero
       title="Built for delivery and logistics companies"
       description="Know your riders, match them faster and plan for busy periods with data."
-      :links="[{ label: 'Request a demo', to: '/contact', trailingIcon: 'i-lucide-arrow-right', size: 'xl' }]"
+      :links="[
+        { label: 'Open the live demo', to: '/demo', trailingIcon: 'i-lucide-arrow-right', size: 'xl' },
+        { label: 'Talk to us', to: '/contact', size: 'xl', color: 'neutral', variant: 'outline' }
+      ]"
     />
 
     <UPageSection title="Who it is for" description="Any business that needs deliveries done well." :features="benefits" />
