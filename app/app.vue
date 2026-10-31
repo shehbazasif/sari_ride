@@ -1,54 +1,50 @@
-<script setup>
+<script setup lang="ts">
 useHead({
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
-  link: [
-    { rel: 'icon', href: '/favicon.ico' }
-  ],
-  htmlAttrs: {
-    lang: 'en'
-  }
+  meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+  link: [{ rel: 'icon', href: '/favicon.ico' }],
+  htmlAttrs: { lang: 'en' }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'Fero Ferto | AI-powered delivery riders'
+const description = 'Fero Ferto connects restaurants and shops with trained delivery riders and uses AI to dispatch every order fast.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
+
+const route = useRoute()
+
+const items = computed(() => [
+  { label: 'Home', to: '/', active: route.path === '/' },
+  { label: 'How it works', to: '/how-it-works', active: route.path.startsWith('/how-it-works') },
+  { label: 'For businesses', to: '/businesses', active: route.path.startsWith('/businesses') },
+  { label: 'For riders', to: '/riders', active: route.path.startsWith('/riders') },
+  { label: 'Contact', to: '/contact', active: route.path.startsWith('/contact') }
+])
 </script>
 
 <template>
   <UApp>
     <UHeader>
       <template #left>
-        <NuxtLink
-          to="/"
-          class="focus-visible:outline-3 outline-primary/25 rounded-md p-1 -ms-1"
-        >
-          <AppLogo class="w-auto h-6 shrink-0" />
+        <NuxtLink to="/" aria-label="Fero Ferto home">
+          <AppLogo />
         </NuxtLink>
-
-        <TemplateMenu />
       </template>
+
+      <UNavigationMenu :items="items" variant="link" />
 
       <template #right>
         <UColorModeButton />
+        <UButton to="/contact" label="Request a demo" class="hidden sm:inline-flex" />
+      </template>
 
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
+      <template #body>
+        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
       </template>
     </UHeader>
 
@@ -56,21 +52,22 @@ useSeoMeta({
       <NuxtPage />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <USeparator />
 
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          © {{ new Date().getFullYear() }} Fero Ferto. All rights reserved.
         </p>
       </template>
 
+      <UNavigationMenu :items="items" variant="link" />
+
       <template #right>
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
+          to="mailto:hello@feroferto.gr"
+          icon="i-lucide-mail"
+          aria-label="Email Fero Ferto"
           color="neutral"
           variant="ghost"
         />

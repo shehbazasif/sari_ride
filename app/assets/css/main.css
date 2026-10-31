@@ -2,17 +2,63 @@
 @import "@nuxt/ui";
 
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  --font-sans: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+.dark {
+  --ui-bg: #05070d;
+  --ui-bg-muted: #0a0f1c;
+  --ui-bg-elevated: #0d1426;
+  --ui-border: #1a2440;
+}
+
+body {
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(139, 92, 246, 0.18), transparent 60%),
+    radial-gradient(50rem 36rem at -10% 20%, rgba(34, 211, 238, 0.12), transparent 60%),
+    #05070d;
+}
+
+/* faint engineering grid behind everything */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(13, 20, 38, 0.85), rgba(8, 12, 24, 0.85));
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 1rem;
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.06), 0 20px 60px -20px rgba(34, 211, 238, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.glow-text { text-shadow: 0 0 40px rgba(34, 211, 238, 0.35); }
+
+/* one orchestrated entrance for the hero */
+.rise { opacity: 0; transform: translateY(14px); animation: rise 0.8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* radar */
+.sweep { transform-origin: 260px 260px; animation: spin 7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -28; } }
+.ping { transform-box: fill-box; transform-origin: center; animation: ping 2.6s ease-out infinite; animation-delay: var(--d, 0s); }
+@keyframes ping { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(3.2); opacity: 0; } }
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+
+/* chart line draws itself once */
+.draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2.4s ease-out 0.4s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.grow { transform-origin: bottom; transform: scaleY(0); animation: grow 1s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+@keyframes grow { to { transform: scaleY(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .sweep, .flow, .ping, .float, .draw, .grow { animation: none !important; opacity: 1; transform: none; stroke-dashoffset: 0; }
 }

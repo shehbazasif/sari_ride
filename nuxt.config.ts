@@ -5,6 +5,8 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+  colorMode: { preference: 'dark', fallback: 'dark' },
+
   devtools: {
     enabled: true
   },
