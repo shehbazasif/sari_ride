@@ -16,7 +16,7 @@ const pat = (i: number) => pattern[i]!
 function cell(c: { day: number, hour: number, value: number }) {
   const t = c.value / maxPattern.value
   if (t === 0) return { background: 'rgba(148,163,184,.08)' }
-  return { background: t > 0.66 ? 'rgba(139,92,246,.85)' : t > 0.33 ? `rgba(34,211,238,${0.45 + t * 0.3})` : `rgba(34,211,238,${0.12 + t * 0.3})` }
+  return { background: t > 0.66 ? 'rgba(239,90,31,.85)' : t > 0.33 ? `rgba(75,107,184,${0.45 + t * 0.3})` : `rgba(75,107,184,${0.12 + t * 0.3})` }
 }
 
 // Workload distribution histogram: weekly booked hours buckets
@@ -37,9 +37,9 @@ const buckets = computed(() => {
 const zones = computed(() => [...zoneStats(RIDERS)].sort((a, b) => b.utilization - a.utilization))
 
 const heatLegend = [
-  { label: 'Low', color: 'rgba(34,211,238,.2)' },
-  { label: 'Medium', color: 'rgba(34,211,238,.6)' },
-  { label: 'High', color: 'rgba(139,92,246,.85)' }
+  { label: 'Low', color: 'rgba(75,107,184,.2)' },
+  { label: 'Medium', color: 'rgba(75,107,184,.6)' },
+  { label: 'High', color: 'rgba(239,90,31,.85)' }
 ]
 </script>
 
@@ -135,7 +135,7 @@ const heatLegend = [
             </div>
             <div class="h-2.5 rounded-full bg-elevated overflow-hidden">
               <div
-                class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-violet-500"
+                class="h-full rounded-full bg-primary"
                 :style="{ width: z.utilization + '%' }"
               />
             </div>
@@ -154,8 +154,8 @@ const heatLegend = [
       <DemoChartLine
         :labels="PERFORMANCE_TREND.map(w => w.week)"
         :series="[
-          { name: 'On-time deliveries %', data: PERFORMANCE_TREND.map(w => w.onTime), color: '#22d3ee', area: true },
-          { name: 'Workforce utilization %', data: PERFORMANCE_TREND.map(w => w.utilization), color: '#8b5cf6' }
+          { name: 'On-time deliveries %', data: PERFORMANCE_TREND.map(w => w.onTime), color: '#4b6bb8', area: true },
+          { name: 'Workforce utilization %', data: PERFORMANCE_TREND.map(w => w.utilization), color: '#ef5a1f' }
         ]"
       />
       <p class="mt-3 text-xs text-muted">

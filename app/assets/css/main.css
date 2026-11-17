@@ -2,63 +2,134 @@
 @import "@nuxt/ui";
 
 @theme static {
-  --font-sans: 'Space Grotesk', 'Inter', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* Brand orange: riders, primary actions */
+  --color-brand-50: #fff5ef;
+  --color-brand-100: #ffe7d9;
+  --color-brand-200: #fecbaf;
+  --color-brand-300: #fca77a;
+  --color-brand-400: #f97a42;
+  --color-brand-500: #ef5a1f;
+  --color-brand-600: #d94414;
+  --color-brand-700: #b33413;
+  --color-brand-800: #8f2c16;
+  --color-brand-900: #742715;
+  --color-brand-950: #3f1008;
+
+  /* Ink blue: delivery companies */
+  --color-ink-50: #f2f5fb;
+  --color-ink-100: #e1e8f5;
+  --color-ink-200: #c6d3ec;
+  --color-ink-300: #9db3dd;
+  --color-ink-400: #6d8bca;
+  --color-ink-500: #4b6bb8;
+  --color-ink-600: #3a539c;
+  --color-ink-700: #31447f;
+  --color-ink-800: #2c3b69;
+  --color-ink-900: #283358;
+  --color-ink-950: #1a2038;
+
+  --ease-out-soft: cubic-bezier(.2, .7, .2, 1);
+}
+
+:root {
+  --ui-bg: #faf9f6;
+  --ui-bg-muted: #f3f1ec;
+  --ui-bg-elevated: #ffffff;
+  --ui-bg-accented: #ebe8e1;
+  --ui-border: #e6e2da;
+  --ui-border-muted: #efece6;
+  --ui-border-accented: #d6d1c6;
 }
 
 .dark {
-  --ui-bg: #05070d;
-  --ui-bg-muted: #0a0f1c;
-  --ui-bg-elevated: #0d1426;
-  --ui-border: #1a2440;
+  --ui-bg: #0f0f0d;
+  --ui-bg-muted: #171714;
+  --ui-bg-elevated: #1c1c19;
+  --ui-bg-accented: #262622;
+  --ui-border: #2a2a26;
+  --ui-border-muted: #22221f;
+  --ui-border-accented: #3a3934;
 }
 
 body {
-  background:
-    radial-gradient(60rem 40rem at 85% -10%, rgba(139, 92, 246, 0.18), transparent 60%),
-    radial-gradient(50rem 36rem at -10% 20%, rgba(34, 211, 238, 0.12), transparent 60%),
-    #05070d;
+  background: var(--ui-bg);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01', 'cv11';
 }
 
-/* faint engineering grid behind everything */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-}
+::selection { background: var(--color-brand-200); color: var(--color-brand-950); }
 
+/* Surfaces */
 .panel {
-  background: linear-gradient(180deg, rgba(13, 20, 38, 0.85), rgba(8, 12, 24, 0.85));
-  border: 1px solid rgba(56, 189, 248, 0.18);
+  background: var(--ui-bg-elevated);
+  border: 1px solid var(--ui-border);
   border-radius: 1rem;
-  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.06), 0 20px 60px -20px rgba(34, 211, 238, 0.25);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(20, 18, 12, .03), 0 12px 32px -18px rgba(20, 18, 12, .18);
+}
+.dark .panel { box-shadow: 0 1px 0 rgba(0, 0, 0, .4), 0 18px 40px -22px rgba(0, 0, 0, .7); }
+
+/* Kept for the demo page: a quiet dot grid instead of a neon one */
+.grid-bg {
+  background-image: radial-gradient(color-mix(in oklab, var(--ui-text-muted) 22%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+.glow-text { text-shadow: none; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
 }
 
-.glow-text { text-shadow: 0 0 40px rgba(34, 211, 238, 0.35); }
-
-/* one orchestrated entrance for the hero */
-.rise { opacity: 0; transform: translateY(14px); animation: rise 0.8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+/* Hero entrance */
+.rise { opacity: 0; transform: translateY(14px); animation: rise .8s var(--ease-out-soft) forwards; animation-delay: var(--d, 0s); }
 @keyframes rise { to { opacity: 1; transform: none; } }
 
-/* radar */
-.sweep { transform-origin: 260px 260px; animation: spin 7s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
-@keyframes flow { to { stroke-dashoffset: -28; } }
-.ping { transform-box: fill-box; transform-origin: center; animation: ping 2.6s ease-out infinite; animation-delay: var(--d, 0s); }
-@keyframes ping { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(3.2); opacity: 0; } }
-.float { animation: float 6s ease-in-out infinite; }
-@keyframes float { 50% { transform: translateY(-8px); } }
+/* Scroll reveal (v-reveal) */
+[data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease-out-soft), transform .8s var(--ease-out-soft); transition-delay: var(--d, 0ms); }
+[data-reveal].is-in { opacity: 1; transform: none; }
 
-/* chart line draws itself once */
-.draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2.4s ease-out 0.4s forwards; }
+/* Swap transition for changing UI states */
+.swap-enter-active, .swap-leave-active { transition: opacity .35s var(--ease-out-soft), transform .35s var(--ease-out-soft); }
+.swap-enter-from { opacity: 0; transform: translateY(8px); }
+.swap-leave-to { opacity: 0; transform: translateY(-6px); }
+
+/* Small building blocks */
+.pop { animation: pop .45s var(--ease-out-soft) both; animation-delay: var(--d, 0s); }
+@keyframes pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+.fill-x { transform-origin: left; animation: fill-x .9s var(--ease-out-soft) both; animation-delay: var(--d, 0s); }
+@keyframes fill-x { from { transform: scaleX(0); } }
+.shimmer { background: linear-gradient(90deg, var(--ui-bg-accented) 0%, var(--ui-bg-muted) 50%, var(--ui-bg-accented) 100%); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.pulse-ring { animation: pulse-ring 2.2s ease-out infinite; }
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.45); opacity: 0; } }
+.spin-slow { animation: spin 6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Used by demo charts */
+.draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw 2.4s ease-out .4s forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
-.grow { transform-origin: bottom; transform: scaleY(0); animation: grow 1s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+.grow { transform-origin: bottom; transform: scaleY(0); animation: grow 1s var(--ease-out-soft) forwards; animation-delay: var(--d, 0s); }
 @keyframes grow { to { transform: scaleY(1); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise, .sweep, .flow, .ping, .float, .draw, .grow { animation: none !important; opacity: 1; transform: none; stroke-dashoffset: 0; }
+  .rise, .pop, .fill-x, .shimmer, .pulse-ring, .spin-slow, .draw, .grow { animation: none !important; opacity: 1; transform: none; stroke-dashoffset: 0; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .swap-enter-active, .swap-leave-active { transition: none; }
+}
+
+/* Bars that rise once (named to avoid Tailwind's `grow` utility) */
+.bar-up { transform-origin: bottom; animation: grow .9s var(--ease-out-soft) both; animation-delay: var(--d, 0s); }
+
+/* Animations inside a v-reveal block wait until the block scrolls into view */
+[data-reveal]:not(.is-in) :is(.pop, .fill-x, .bar-up) { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-up { animation: none !important; transform: none; }
 }

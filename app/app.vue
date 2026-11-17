@@ -6,7 +6,7 @@ useHead({
 })
 
 const title = 'Fero Ferto | Delivery workforce, managed'
-const description = 'Fero Ferto is the manpower company that connects trained delivery riders with delivery companies — riders find new opportunities, companies hire and track workforce performance in one dashboard.'
+const description = 'Fero Ferto is a registered staffing intermediary in Greece that connects delivery riders with delivery companies. Our AI matches riders to jobs and companies to compatible riders, and we manage the contract between them.'
 
 useSeoMeta({
   title,
@@ -17,6 +17,31 @@ useSeoMeta({
 })
 
 const route = useRoute()
+
+const footerColumns = [
+  {
+    label: 'Companies',
+    links: [
+      { label: 'For businesses', to: '/businesses' },
+      { label: 'Request riders', to: '/contact?as=company' },
+      { label: 'Live demo', to: '/demo' }
+    ]
+  },
+  {
+    label: 'Riders',
+    links: [
+      { label: 'Ride with us', to: '/riders' },
+      { label: 'Apply as a rider', to: '/contact?as=rider' }
+    ]
+  },
+  {
+    label: 'Fero Ferto',
+    links: [
+      { label: 'How it works', to: '/how-it-works' },
+      { label: 'Contact', to: '/contact' }
+    ]
+  }
+]
 
 const items = computed(() => [
   { label: 'Home', to: '/', active: route.path === '/' },
@@ -55,18 +80,57 @@ const items = computed(() => [
 
     <USeparator />
 
-    <UFooter>
+    <UFooter :ui="{ top: 'border-b border-default' }">
+      <template #top>
+        <UContainer class="grid gap-10 py-14 lg:grid-cols-[1.2fr_2fr] lg:gap-16">
+          <div class="max-w-sm">
+            <NuxtLink to="/" aria-label="Fero Ferto home">
+              <AppLogo />
+            </NuxtLink>
+            <p class="mt-4 text-sm leading-relaxed text-muted">
+              A registered staffing intermediary in Greece. We match delivery riders with delivery companies and hold the contract for both sides.
+            </p>
+            <a
+              href="mailto:info@feroferto.com"
+              class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-highlighted underline-offset-4 hover:underline"
+            >
+              <UIcon name="i-lucide-mail" class="size-4 text-primary" />
+              info@feroferto.com
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <div v-for="col in footerColumns" :key="col.label">
+              <p class="eyebrow">
+                {{ col.label }}
+              </p>
+              <ul class="mt-4 space-y-2.5">
+                <li v-for="link in col.links" :key="link.label">
+                  <ULink :to="link.to" class="text-sm text-muted transition-colors hover:text-highlighted">
+                    {{ link.label }}
+                  </ULink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </UContainer>
+      </template>
+
       <template #left>
         <p class="text-sm text-muted">
           © {{ new Date().getFullYear() }} Fero Ferto. All rights reserved.
         </p>
       </template>
 
-      <UNavigationMenu :items="items" variant="link" />
+      <p class="flex items-center gap-2 text-sm text-muted">
+        <span class="size-1.5 rounded-full bg-primary" />
+        Greece · Europe and the GCC
+      </p>
 
       <template #right>
+        <UColorModeButton />
         <UButton
-          to="mailto:hello@feroferto.gr"
+          to="mailto:info@feroferto.com"
           icon="i-lucide-mail"
           aria-label="Email Fero Ferto"
           color="neutral"

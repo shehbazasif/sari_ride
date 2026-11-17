@@ -6,10 +6,10 @@ const props = defineProps<{
 }>()
 
 const gradients = [
-  'from-cyan-400 to-violet-500',
-  'from-violet-500 to-fuchsia-500',
-  'from-cyan-300 to-sky-500',
-  'from-sky-500 to-violet-500'
+  'bg-primary/15 text-primary-700 dark:text-primary-300',
+  'bg-secondary/15 text-secondary-700 dark:text-secondary-300',
+  'bg-amber-500/15 text-amber-800 dark:text-amber-300',
+  'bg-accented text-default'
 ]
 const initials = computed(() => props.name.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase())
 const grad = computed(() => gradients[(props.name.length + props.name.charCodeAt(0)) % gradients.length])
@@ -25,12 +25,12 @@ const dot = computed(() => ({
 <template>
   <span class="relative inline-flex shrink-0">
     <span
-      class="rounded-full bg-gradient-to-br grid place-items-center font-bold text-[#05070d]"
+      class="rounded-full grid place-items-center font-semibold"
       :class="[grad, sizeCls]"
     >{{ initials }}</span>
     <span
       v-if="status"
-      class="absolute bottom-0 right-0 size-2.5 rounded-full ring-2 ring-[#05070d]"
+      class="absolute bottom-0 right-0 size-2.5 rounded-full ring-2 ring-[var(--ui-bg-elevated)]"
       :class="dot"
     />
   </span>

@@ -31,9 +31,9 @@ const weekItems = computed(() => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun
 const dailyView = ref<'today' | 'week'>('today')
 
 const statusDonut = computed(() => [
-  { label: 'Available', value: stats.available, color: '#22d3ee' },
-  { label: 'On shift', value: stats.assigned, color: '#8b5cf6' },
-  { label: 'Off duty', value: stats.unavailable, color: '#52525b' }
+  { label: 'Available', value: stats.available, color: '#4b6bb8' },
+  { label: 'On shift', value: stats.assigned, color: '#ef5a1f' },
+  { label: 'Off duty', value: stats.unavailable, color: '#a8a29e' }
 ])
 
 const busyNow = computed(() => ridersOnAtHour(RIDERS, currentHour))

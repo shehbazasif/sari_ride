@@ -104,8 +104,8 @@ const suggested = computed(() => hourSlots.map(h => ({ label: h.label, value: h.
         <DemoChartLine
           :labels="labels"
           :series="[
-            { name: 'Riders needed (all companies)', data: demand, color: '#22d3ee', area: true },
-            { name: 'Riders available in network', data: capacity, color: '#8b5cf6' },
+            { name: 'Riders needed (all companies)', data: demand, color: '#4b6bb8', area: true },
+            { name: 'Riders available in network', data: capacity, color: '#ef5a1f' },
             { name: 'Gap', data: gapSeries, color: '#f59e0b', dashed: true }
           ]"
         />
@@ -130,7 +130,7 @@ const suggested = computed(() => hourSlots.map(h => ({ label: h.label, value: h.
               >covered</span>
             </div>
             <p class="mt-1 text-xs text-muted">
-              need <strong class="text-cyan-300">{{ d.demand }}</strong> · available <strong class="text-violet-300">{{ d.capacity }}</strong>
+              need <strong class="text-secondary">{{ d.demand }}</strong> · available <strong class="text-primary">{{ d.capacity }}</strong>
               <span
                 v-if="d.demand > d.capacity"
                 class="text-amber-300"

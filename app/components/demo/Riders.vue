@@ -148,11 +148,11 @@ function bar(r: DemoRider) {
               /> {{ r.vehicle }} ·
               <span
                 v-if="r.currentCompany"
-                class="text-violet-300"
+                class="text-primary"
               >{{ r.currentCompany }}</span>
               <span
                 v-else
-                class="text-cyan-300"
+                class="text-secondary"
               >open to offers</span>
             </p>
           </div>
@@ -171,7 +171,7 @@ function bar(r: DemoRider) {
           </div>
           <div class="h-1.5 rounded-full bg-elevated overflow-hidden">
             <div
-              class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-violet-500"
+              class="h-full rounded-full bg-primary"
               :style="{ width: bar(r) + '%' }"
             />
           </div>
@@ -197,7 +197,7 @@ function bar(r: DemoRider) {
         class="absolute inset-0 bg-black/60 backdrop-blur-sm"
         @click="selected = null"
       />
-      <aside class="relative h-full w-full max-w-md bg-[#0a0f1c] border-l border-default overflow-y-auto p-6 space-y-5">
+      <aside class="relative h-full w-full max-w-md bg-default border-l border-default overflow-y-auto p-6 space-y-5">
         <button
           class="absolute top-4 right-4 text-muted hover:text-default cursor-pointer"
           aria-label="Close profile"
@@ -237,7 +237,7 @@ function bar(r: DemoRider) {
           </p>
           <p
             class="font-semibold"
-            :class="selected.currentCompany ? 'text-violet-300' : 'text-cyan-300'"
+            :class="selected.currentCompany ? 'text-primary' : 'text-secondary'"
           >
             {{ selected.currentCompany || 'Open to new opportunities' }}
           </p>
@@ -332,7 +332,7 @@ function bar(r: DemoRider) {
           </p>
           <div class="h-2 rounded-full bg-elevated overflow-hidden">
             <div
-              class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-violet-500"
+              class="h-full rounded-full bg-primary"
               :style="{ width: bar(selected) + '%' }"
             />
           </div>

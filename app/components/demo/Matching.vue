@@ -45,7 +45,7 @@ watch(form, triggerRecompute)
 watch([preferredFrom, preferredTo], triggerRecompute)
 
 function zoneBadge(r: DemoRider) {
-  return r.location === form.location ? 'text-primary border-primary/40' : zoneOf[r.location] === zoneOf[form.location] ? 'text-violet-300 border-violet-500/40' : 'text-muted border-default'
+  return r.location === form.location ? 'text-primary border-primary/40' : zoneOf[r.location] === zoneOf[form.location] ? 'text-secondary border-secondary/40' : 'text-muted border-default'
 }
 </script>
 
@@ -201,11 +201,11 @@ function zoneBadge(r: DemoRider) {
                   {{ res.rider.location }} · {{ res.rider.vehicle }} · {{ res.rider.rating }}★
                   <span
                     v-if="res.rider.currentCompany"
-                    class="text-violet-300"
+                    class="text-primary"
                   >·{{ res.rider.currentCompany }}</span>
                   <span
                     v-else
-                    class="text-cyan-300"
+                    class="text-secondary"
                   >·open to offers</span>
                 </p>
               </div>
@@ -223,7 +223,7 @@ function zoneBadge(r: DemoRider) {
             </div>
             <div class="mt-2 h-1.5 rounded-full overflow-hidden bg-elevated">
               <div
-                class="h-full bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-500"
+                class="h-full bg-primary transition-all duration-500"
                 :style="{ width: res.score + '%' }"
               />
             </div>

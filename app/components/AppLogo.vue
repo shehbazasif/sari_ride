@@ -1,15 +1,39 @@
 <template>
-  <span class="inline-flex items-center gap-2 font-semibold text-lg tracking-tight">
-    <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <circle cx="16" cy="16" r="14" stroke="url(#lg)" stroke-width="2" />
-      <circle cx="16" cy="16" r="7" stroke="url(#lg)" stroke-width="1.5" opacity=".7" />
-      <circle cx="16" cy="16" r="2.5" fill="#22d3ee" />
-      <path d="M16 16 L27 8" stroke="#22d3ee" stroke-width="1.5" />
-      <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="32" y2="32">
-          <stop stop-color="#22d3ee" /><stop offset="1" stop-color="#8b5cf6" />
-        </linearGradient>
-      </defs>
+  <span class="inline-flex items-center gap-2.5 font-semibold text-[17px] tracking-tight text-highlighted">
+    <!-- Rider dot, Fero Ferto in the middle, company dot -->
+    <svg
+      width="34"
+      height="20"
+      viewBox="0 0 34 20"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 10H29"
+        stroke="currentColor"
+        stroke-width="1.5"
+        opacity=".35"
+      />
+      <circle
+        cx="5"
+        cy="10"
+        r="4"
+        class="fill-primary"
+      />
+      <rect
+        x="11"
+        y="4"
+        width="12"
+        height="12"
+        rx="3.5"
+        fill="currentColor"
+      />
+      <circle
+        cx="29"
+        cy="10"
+        r="4"
+        class="fill-secondary"
+      />
     </svg>
     <span>Fero Ferto</span>
   </span>

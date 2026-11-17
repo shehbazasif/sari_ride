@@ -20,7 +20,7 @@ const max = computed(() => Math.max(...props.items.map(i => i.value), 1))
         class="flex-1 flex items-end justify-center h-full"
       >
         <div
-          class="w-full rounded-t bg-gradient-to-t from-violet-500 to-cyan-400 grow"
+          class="w-full rounded-t bg-secondary grow"
           :style="{ 'height': (item.value / max) * 100 + '%', '--d': 0.3 + i * 0.05 + 's' }"
           :title="`${item.label}: ${item.value}`"
         />

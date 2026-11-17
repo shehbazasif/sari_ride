@@ -69,7 +69,7 @@ const paths = computed(() => props.series.map((s, si) => {
       </defs>
       <path
         d="M0 42 H460 M0 85 H460 M0 128 H460"
-        stroke="#16213f"
+        style="stroke: var(--ui-border)"
       />
       <path
         v-for="p in paths"
