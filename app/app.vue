@@ -1,7 +1,10 @@
 <script setup lang="ts">
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-  link: [{ rel: 'icon', href: '/favicon.ico' }],
+  link: [
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', href: '/images/logo.png' }
+  ],
   htmlAttrs: { lang: 'en' }
 })
 
@@ -31,12 +34,14 @@ const footerColumns = [
     label: 'Riders',
     links: [
       { label: 'Ride with us', to: '/riders' },
-      { label: 'Apply as a rider', to: '/contact?as=rider' }
+      { label: 'Apply as a rider', to: '/contact?as=rider' },
+      { label: 'Van rental & drivers', to: '/van-rental' }
     ]
   },
   {
     label: 'Fero Ferto',
     links: [
+      { label: 'About', to: '/about' },
       { label: 'How it works', to: '/how-it-works' },
       { label: 'Contact', to: '/contact' }
     ]
@@ -48,7 +53,9 @@ const items = computed(() => [
   { label: 'How it works', to: '/how-it-works', active: route.path.startsWith('/how-it-works') },
   { label: 'For businesses', to: '/businesses', active: route.path.startsWith('/businesses') },
   { label: 'For riders', to: '/riders', active: route.path.startsWith('/riders') },
+  { label: 'Van rental', to: '/van-rental', active: route.path.startsWith('/van-rental') },
   { label: 'Live demo', to: '/demo', active: route.path.startsWith('/demo') },
+  { label: 'About', to: '/about', active: route.path.startsWith('/about') },
   { label: 'Contact', to: '/contact', active: route.path.startsWith('/contact') }
 ])
 </script>
@@ -57,20 +64,35 @@ const items = computed(() => [
   <UApp>
     <UHeader>
       <template #left>
-        <NuxtLink to="/" aria-label="Fero Ferto home">
+        <NuxtLink
+          to="/"
+          aria-label="Fero Ferto home"
+        >
           <AppLogo />
         </NuxtLink>
       </template>
 
-      <UNavigationMenu :items="items" variant="link" />
+      <UNavigationMenu
+        :items="items"
+        variant="link"
+      />
 
       <template #right>
         <UColorModeButton />
-        <UButton to="/demo" label="Request a demo" class="hidden sm:inline-flex" trailing-icon="i-lucide-arrow-right" />
+        <UButton
+          to="/demo"
+          label="Request a demo"
+          class="hidden sm:inline-flex"
+          trailing-icon="i-lucide-arrow-right"
+        />
       </template>
 
       <template #body>
-        <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+        <UNavigationMenu
+          :items="items"
+          orientation="vertical"
+          class="-mx-2.5"
+        />
       </template>
     </UHeader>
 
@@ -84,7 +106,10 @@ const items = computed(() => [
       <template #top>
         <UContainer class="grid gap-10 py-14 lg:grid-cols-[1.2fr_2fr] lg:gap-16">
           <div class="max-w-sm">
-            <NuxtLink to="/" aria-label="Fero Ferto home">
+            <NuxtLink
+              to="/"
+              aria-label="Fero Ferto home"
+            >
               <AppLogo />
             </NuxtLink>
             <p class="mt-4 text-sm leading-relaxed text-muted">
@@ -94,19 +119,31 @@ const items = computed(() => [
               href="mailto:info@feroferto.com"
               class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-highlighted underline-offset-4 hover:underline"
             >
-              <UIcon name="i-lucide-mail" class="size-4 text-primary" />
+              <UIcon
+                name="i-lucide-mail"
+                class="size-4 text-primary"
+              />
               info@feroferto.com
             </a>
           </div>
 
           <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            <div v-for="col in footerColumns" :key="col.label">
+            <div
+              v-for="col in footerColumns"
+              :key="col.label"
+            >
               <p class="eyebrow">
                 {{ col.label }}
               </p>
               <ul class="mt-4 space-y-2.5">
-                <li v-for="link in col.links" :key="link.label">
-                  <ULink :to="link.to" class="text-sm text-muted transition-colors hover:text-highlighted">
+                <li
+                  v-for="link in col.links"
+                  :key="link.label"
+                >
+                  <ULink
+                    :to="link.to"
+                    class="text-sm text-muted transition-colors hover:text-highlighted"
+                  >
                     {{ link.label }}
                   </ULink>
                 </li>
