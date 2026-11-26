@@ -1,8 +1,14 @@
 <script setup lang="ts">
 const stats = [
   { value: '40–50', label: 'delivery riders in our network' },
-  { value: '3', label: 'major delivery platforms our riders work with in Greece' },
+  { value: '3', label: 'delivery companies our riders work with in Greece' },
   { value: '2', label: 'regions served: Europe and the GCC' }
+]
+
+const partners = [
+  { name: 'BOX NOW', logo: '/partners/boxnow.svg', imgClass: 'h-14' },
+  { name: 'efood', logo: '/partners/efood.svg', imgClass: 'h-10' },
+  { name: 'BSK Group', logo: '/partners/bsk.png', imgClass: 'h-14' }
 ]
 
 const companySide = [
@@ -22,7 +28,7 @@ const riderSide = [
 const reasons = [
   { n: '01', title: 'One contract in the middle', text: 'Riders and companies each sign with Fero Ferto. Neither side has to manage the other\'s paperwork, and both know who to call.' },
   { n: '02', title: 'Matches that hold up on a Friday night', text: 'Matching looks at when riders really work, where, on what vehicle and how reliably. Not just who happens to be free.' },
-  { n: '03', title: 'Built inside real delivery work', text: 'Our riders already deliver for eFOOD, BOX Delivery and Wolt in Greece. The platform is shaped by that daily work.' }
+  { n: '03', title: 'Built inside real delivery work', text: 'Our riders already deliver for BOX NOW, efood and BSK Group. The platform is shaped by that daily work.' }
 ]
 </script>
 
@@ -86,28 +92,48 @@ const reasons = [
 
     <!-- Proof -->
     <section class="border-y border-default bg-muted/60">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16">
-        <div v-reveal>
-          <p class="eyebrow">
-            Our riders work with
-          </p>
-          <p class="mt-2 flex flex-wrap items-baseline gap-x-6 gap-y-1 text-2xl font-semibold tracking-tight text-highlighted">
-            <span>eFOOD</span><span class="text-dimmed">/</span><span>BOX Delivery</span><span class="text-dimmed">/</span><span>Wolt</span>
-          </p>
-        </div>
-        <dl class="grid grid-cols-3 gap-4 lg:justify-self-end lg:gap-12">
+      <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-16">
+        <p
+          v-reveal
+          class="eyebrow text-center"
+        >
+          Our riders work with
+        </p>
+        <ul class="mx-auto mt-6 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+          <li
+            v-for="(p, i) in partners"
+            :key="p.name"
+            v-reveal="i * 80"
+            class="flex h-24 items-center justify-center rounded-2xl border border-default bg-default px-8 transition-shadow hover:shadow-sm"
+          >
+            <img
+              v-if="p.logo"
+              :src="p.logo"
+              :alt="p.name"
+              :class="p.imgClass"
+              class="w-auto object-contain"
+              loading="lazy"
+            >
+            <span
+              v-else
+              class="text-2xl font-bold tracking-tight text-highlighted"
+            >{{ p.name }}</span>
+          </li>
+        </ul>
+        <dl class="mx-auto mt-12 grid max-w-4xl grid-cols-1 divide-y divide-default border-t border-default sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           <div
             v-for="(s, i) in stats"
             :key="s.label"
             v-reveal="i * 100"
+            class="px-6 pt-6 pb-2 text-center"
           >
             <dt class="sr-only">
               {{ s.label }}
             </dt>
-            <dd class="text-3xl font-semibold tracking-tight text-highlighted">
+            <dd class="text-4xl font-semibold tracking-tight text-highlighted">
               {{ s.value }}
             </dd>
-            <dd class="mt-1 max-w-[12rem] text-xs leading-snug text-muted sm:text-sm">
+            <dd class="mx-auto mt-2 max-w-[14rem] text-sm leading-snug text-muted">
               {{ s.label }}
             </dd>
           </div>
@@ -253,7 +279,7 @@ const reasons = [
             Europe · Home market
           </p>
           <p class="mt-3 text-muted">
-            Based in Greece, where our riders already work with eFOOD, BOX Delivery and Wolt.
+            Based in Greece, where our riders already work with BOX NOW, efood and BSK Group.
           </p>
         </div>
         <div
